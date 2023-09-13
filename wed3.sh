@@ -11,7 +11,7 @@ git_branch="branch1"
 
 # Change directory to the Git repository root
 #cd /path/to/your/git/repo
-
+git branch -a
 # Switch to the specified Git branch
 git checkout $git_branch
 
