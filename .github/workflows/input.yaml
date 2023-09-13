@@ -1,0 +1,24 @@
+name: Workflow with User Input
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder_number:
+        description: 'Enter the folder number (1-10)'
+        required: true
+
+jobs:
+  user-input:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Custom Script
+        run: |
+          # Access the input parameter value using ${{ github.event.inputs.folder_number }}
+          folder_number="${{ github.event.inputs.folder_number }}"
+          echo "User input: $folder_number"
+          # Use $folder_number in your script
+          ./wed3.sh "$folder_number"
