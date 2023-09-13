@@ -21,4 +21,5 @@ jobs:
           folder_number="${{ github.event.inputs.folder_number }}"
           echo "User input: $folder_number"
           # Use $folder_number in your script
+          chmod +x wed3.sh
           ./wed3.sh "$folder_number"
