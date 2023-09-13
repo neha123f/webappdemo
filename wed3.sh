@@ -2,6 +2,8 @@
 
 # Define the range from 1 to N (change N to your desired value)
 start_range=1
+end_range=$1
+
 #read -p "Enter the folder number (1-10): " end_range
 
 # Define the Git branch you want to switch to
@@ -11,7 +13,7 @@ git_branch="branch1"
 #cd /path/to/your/git/repo
 
 # Switch to the specified Git branch
-git checkout "$git_branch"
+git checkout $git_branch
 
 # Check if the branch switch was successful
 if [ $? -eq 0 ]; then
