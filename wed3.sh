@@ -7,17 +7,17 @@ end_range=$1
 #read -p "Enter the folder number (1-10): " end_range
 
 # Define the Git branch you want to switch to
-git_branch="branch1"
+#git_branch="branch1"
 
 # Change directory to the Git repository root
 #cd /path/to/your/git/repo
-git branch -a
+#git branch -a
 # Switch to the specified Git branch
-git checkout $git_branch
+#git checkout $git_branch
 
 # Check if the branch switch was successful
 if [ $? -eq 0 ]; then
-  echo "Switched to branch $git_branch successfully."
+  #echo "Switched to branch $git_branch successfully."
 
   # Iterate through the folders in the specified range
   for ((i = end_range; i >= start_range; i--)); do
