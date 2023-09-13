@@ -2,7 +2,7 @@
 
 # Define the range from 1 to N (change N to your desired value)
 start_range=1
-read -p "Enter the folder number (1-10): " end_range
+#read -p "Enter the folder number (1-10): " end_range
 
 # Define the Git branch you want to switch to
 git_branch="branch1"
