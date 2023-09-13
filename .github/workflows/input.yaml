@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+           ref: branch1
 
       - name: Run Custom Script
         run: |
