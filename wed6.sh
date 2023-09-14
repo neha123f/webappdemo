@@ -36,5 +36,12 @@ list_contents() {
   fi
 }
 
-# List contents of the specified folder and its immediate parent folder
+# List contents of the specified folder
 list_contents "$PWD/$end_folder"
+
+# List contents of the folder above the specified folder (one level above)
+parent_folder=$(dirname "$PWD/$end_folder")
+if [ "$parent_folder" != "/" ]; then
+  echo "Contents of Parent Folder $parent_folder:"
+  ls "$parent_folder"
+fi
