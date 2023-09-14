@@ -15,20 +15,26 @@ if [ ! -d "$end_folder" ]; then
   exit 1
 fi
 
-# Function to list contents of a folder and its parent folders recursively
+# Function to list contents of a folder and its immediate parent folder
 list_contents() {
   local folder="$1"
-  while [ "$folder" != "/" ]; do
-    if [ -d "$folder" ]; then
-      echo "Contents of Folder $folder:"
-      ls "$folder"
-    else
-      echo "Folder $folder does not exist."
-      exit 1
-    fi
-    folder=$(dirname "$folder")
-  done
+  local parent_folder=$(dirname "$folder")
+
+  # List the contents of the specified folder
+  if [ -d "$folder" ]; then
+    echo "Contents of Folder $folder:"
+    ls "$folder"
+  else
+    echo "Folder $folder does not exist."
+    exit 1
+  fi
+
+  # List the contents of the parent folder (one level above)
+  if [ "$parent_folder" != "/" ]; then
+    echo "Contents of Parent Folder $parent_folder:"
+    ls "$parent_folder"
+  fi
 }
 
-# List contents of the specified folder and its parent folders
+# List contents of the specified folder and its immediate parent folder
 list_contents "$PWD/$end_folder"
