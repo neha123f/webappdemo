@@ -25,16 +25,16 @@ list_contents() {
     ls "$folder"
   else
     echo "Folder $folder does not exist."
-    exit 1
   fi
 }
 
 # List contents of the specified folder
 list_contents "$PWD/$end_folder"
 
-# List contents of the folders that are before the specified folder
+# Get the parent folder (one level above)
 parent_folder=$(dirname "$PWD/$end_folder")
-while [ "$parent_folder" != "/" ] && [ "$parent_folder" != "$PWD" ]; do
+
+# List contents of the parent folder if it's not the root directory
+if [ "$parent_folder" != "/" ]; then
   list_contents "$parent_folder"
-  parent_folder=$(dirname "$parent_folder")
-done
+fi
