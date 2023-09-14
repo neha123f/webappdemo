@@ -8,8 +8,8 @@ current_directory=$(pwd)
 #ls "$current_directory"
 
 # Ask the user for input
-read -p "Enter a folder name: " user_input
-
+#read -p "Enter a folder name: " user_input
+user_input=$1
 # Check if the user input folder exists in the current directory
 if [ -d "$current_directory/$user_input" ]; then
   # Loop through and print the contents of folders until the user's input folder
