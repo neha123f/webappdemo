@@ -22,16 +22,16 @@ parent_directory="$(dirname "$end_folder")"
 echo "Contents of Folder $end_folder:"
 ls "$end_folder"
 
-# List the contents of folders above the specified folder in reverse order
+# List the contents of folders above the specified folder, excluding sibling folders
 current_folder="$parent_directory"
 
 while [ "$current_folder" != "/" ]; do
-  if [ "$current_folder" = "$end_folder" ]; then
+  if [ -z "$(ls -A "$current_folder" | grep -v "$end_folder")" ]; then
     break
   fi
-  
+
   echo "Contents of Folder $current_folder:"
-  ls "$current_folder"
-  
+  ls "$current_folder" | grep -v "$end_folder"
+
   current_folder="$(dirname "$current_folder")"
 done
