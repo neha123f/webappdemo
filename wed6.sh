@@ -30,7 +30,7 @@ list_contents() {
   fi
 
   # List the contents of the parent folder (one level above)
-  if [ "$parent_folder" != "/" ]; then
+  if [ "$parent_folder" != "/" ] && [ "$parent_folder" != "$folder" ]; then
     echo "Contents of Parent Folder $parent_folder:"
     ls "$parent_folder"
   fi
