@@ -22,4 +22,5 @@ if [ -d "$current_directory/$user_input" ]; then
   done
 else
   echo "Folder $user_input does not exist in the current directory."
+  exit 1
 fi
