@@ -18,30 +18,20 @@ fi
 # Get the parent directory of the end folder
 parent_directory="$(dirname "$end_folder")"
 
-# Function to list contents of a folder and its subfolders recursively
-list_contents_recursive() {
-  local folder="$1"
-  local indent="$2"
-  
-  echo "${indent}Contents of Folder $folder:"
-  
-  for item in "$folder"/*; do
-    if [ -d "$item" ]; then
-      # Recursively list contents of subfolder
-      list_contents_recursive "$item" "$indent  "
-    elif [ -f "$item" ]; then
-      echo "${indent}[File] $(basename "$item")"
-    fi
-  done
-}
+# List the contents of the specified folder
+echo "Contents of Folder $end_folder:"
+ls "$end_folder"
 
-# List the contents of folders and subfolders in reverse order
-current_folder="$end_folder"
+# List the contents of folders above the specified folder in reverse order
+current_folder="$parent_directory"
 
-while [ "$current_folder" != "$parent_directory" ]; do
-  list_contents_recursive "$current_folder" ""
+while [ "$current_folder" != "/" ]; do
+  if [ "$current_folder" = "$end_folder" ]; then
+    break
+  fi
+  
+  echo "Contents of Folder $current_folder:"
+  ls "$current_folder"
+  
   current_folder="$(dirname "$current_folder")"
 done
-
-# List the contents of the first folder in the parent directory
-list_contents_recursive "$parent_directory" ""
