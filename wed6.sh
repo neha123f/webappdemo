@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Prompt the user for a folder number
-read -p "Enter folder number: " folder_number
-
+#read -p "Enter folder number: " folder_number
+folder_number=$1
 # Function to list contents of a folder and its parent folders recursively
 list_contents_recursive() {
   local folder="$1"
