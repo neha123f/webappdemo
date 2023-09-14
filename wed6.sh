@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Prompt the user for a folder number
-read -p "Enter folder number: " folder_number
-
+#read -p "Enter folder number: " folder_number
+folder_number = $1
 # Check if the folder with the specified number exists
 if [ -d "$folder_number" ]; then
   # Display the contents of the specified folder
