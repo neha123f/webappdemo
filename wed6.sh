@@ -13,6 +13,7 @@ if [ -d "$current_directory/$user_input" ]; then
   # Loop through and print the contents of folders until the user's input folder
   for folder in "$current_directory"/*; do
     if [ -d "$folder" ]; then
+      folder_name=$(basename "$folder")
       echo "Contents of Folder $folder:"
       ls "$folder"
       if [ "$folder" == "$current_directory/$user_input" ]; then
