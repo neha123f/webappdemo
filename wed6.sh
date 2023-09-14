@@ -14,7 +14,7 @@ if [ -d "$current_directory/$user_input" ]; then
   for folder in "$current_directory"/*; do
     if [ -d "$folder" ]; then
       folder_name=$(basename "$folder")
-      echo "Contents of Folder $folder:"
+      echo "Contents of Folder $folder_name:"
       ls "$folder"
       if [ "$folder" == "$current_directory/$user_input" ]; then
         break
