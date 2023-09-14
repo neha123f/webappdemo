@@ -18,16 +18,21 @@ fi
 # Get the parent directory of the end folder
 parent_directory="$(dirname "$end_folder")"
 
-# List the contents of folders from the specified folder to the first folder in the parent directory
+# Get a list of folder names in reverse order from the specified folder to the parent directory
+folders=("$end_folder")
 current_folder="$end_folder"
-while [ "$current_folder" != "$parent_directory" ]; do
-  if [ -d "$current_folder" ]; then
-    echo "Contents of Folder $current_folder:"
-    ls "$current_folder"
-  else
-    echo "Folder $current_folder does not exist."
-  fi
 
-  # Move up to the parent directory
+while [ "$current_folder" != "$parent_directory" ]; do
   current_folder="$(dirname "$current_folder")"
+  folders=("$current_folder" "${folders[@]}")
+done
+
+# List the contents of folders in the obtained order
+for folder in "${folders[@]}"; do
+  if [ -d "$folder" ]; then
+    echo "Contents of Folder $folder:"
+    ls "$folder"
+  else
+    echo "Folder $folder does not exist."
+  fi
 done
