@@ -1,5 +1,32 @@
 #!/bin/bash
 
+# Get the current directory
+current_directory=$(pwd)
+
+# List the contents of the current directory
+echo "Contents of Current Directory ($current_directory):"
+ls "$current_directory"
+
+# Ask the user for input
+#read -p "Enter a folder name: " user_input
+user_input=$1
+# Check if the user input folder exists in the current directory
+if [ -d "$current_directory/$user_input" ]; then
+  # Loop through and print the contents of folders until the user's input folder
+  for folder in "$current_directory"/*; do
+    if [ -d "$folder" ]; then
+      echo "Contents of Folder $folder:"
+      ls "$folder"
+      if [ "$folder" == "$current_directory/$user_input" ]; then
+        break
+      fi
+    fi
+  done
+else
+  echo "Folder $user_input does not exist in the current directory."
+fi
+#!/bin/bash
+
 # Check if the command-line argument for the end folder is provided
 if [ -z "$1" ]; then
   echo "Usage: $0 <end_folder>"
