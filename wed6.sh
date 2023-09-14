@@ -15,23 +15,18 @@ if [ ! -d "$end_folder" ]; then
   exit 1
 fi
 
-# Get the parent directory of the end folder
-parent_directory="$(dirname "$end_folder")"
-
-# List the contents of the specified folder
-echo "Contents of Folder $end_folder:"
-ls "$end_folder"
-
-# List the contents of folders above the specified folder, excluding sibling folders
-current_folder="$parent_directory"
-
-while [ "$current_folder" != "/" ]; do
-  if [ -z "$(ls -A "$current_folder" | grep -v "$end_folder")" ]; then
-    break
+# Function to list contents of a folder and its parent folders recursively
+list_contents_recursive() {
+  local folder="$1"
+  
+  echo "Contents of Folder $folder:"
+  ls "$folder"
+  
+  # Check if we've reached the root directory
+  if [ "$folder" != "/" ]; then
+    list_contents_recursive "$(dirname "$folder")"
   fi
+}
 
-  echo "Contents of Folder $current_folder:"
-  ls "$current_folder" | grep -v "$end_folder"
-
-  current_folder="$(dirname "$current_folder")"
-done
+# Call the recursive function to list contents
+list_contents_recursive "$end_folder"
