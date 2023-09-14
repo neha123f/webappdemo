@@ -1,28 +1,37 @@
 #!/bin/bash
 
+# Check if the command-line argument for the end folder is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <end_folder>"
+  exit 1
+fi
+
+# Define the end folder from the command-line argument
+end_folder="$1"
+
+# Check if the end folder exists
+if [ ! -d "$end_folder" ]; then
+  echo "End folder $end_folder does not exist. Exiting the script now."
+  exit 1
+fi
+
 # Function to list contents of a folder and its parent folders recursively
-list_contents_recursive() {
+list_contents() {
   local folder="$1"
-  
-  echo "Contents of Folder $folder:"
-  ls "$folder"
-  
-  # Check if we've reached the current working directory
-  if [ "$folder" != "$(pwd)" ]; then
-    list_contents_recursive "$(dirname "$folder")"
-  fi
+  while [ "$folder" != "/" ]; do
+    if [ -d "$folder" ]; then
+      echo "Contents of Folder $folder:"
+      ls "$folder"
+    else
+      echo "Folder $folder does not exist."
+      exit 1
+    fi
+    folder=$(dirname "$folder")
+    if [ "$folder" == "/" ]; then
+      break
+    fi
+  done
 }
 
-# Get the current working directory
-current_directory="$(pwd)"
-
-# Prompt the user for a folder number
-read -p "Enter folder number: " folder_number
-
-# Check if the folder number is valid
-if [ -d "$folder_number" ]; then
-  # Display the contents of the specified folder
-  list_contents_recursive "$folder_number"
-else
-  echo "Folder $folder_number does not exist."
-fi
+# List contents of the specified folder and its parent folders
+list_contents "$end_folder"
