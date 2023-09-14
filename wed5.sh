@@ -22,7 +22,7 @@ while [ "$current_folder" != "0" ]; do
     echo "Contents of Folder $current_folder:"
     ls "$current_folder"
   else
-    echo "Folder $current_folder does not exist."
+    #echo "Folder $current_folder does not exist."
   fi
 
   # Decrement the current folder number
