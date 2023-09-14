@@ -27,11 +27,8 @@ list_contents() {
       exit 1
     fi
     folder=$(dirname "$folder")
-    if [ "$folder" == "/" ]; then
-      break
-    fi
   done
 }
 
 # List contents of the specified folder and its parent folders
-list_contents "$end_folder"
+list_contents "$PWD/$end_folder"
