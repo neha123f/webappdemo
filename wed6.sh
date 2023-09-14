@@ -15,7 +15,7 @@ if [ ! -d "$end_folder" ]; then
   exit 1
 fi
 
-# Function to list contents of a folder and its immediate parent folder
+# Function to list contents of a folder
 list_contents() {
   local folder="$1"
 
@@ -32,8 +32,9 @@ list_contents() {
 # List contents of the specified folder
 list_contents "$PWD/$end_folder"
 
-# List contents of the folder above the specified folder (one level above)
+# List contents of the folders that are before the specified folder
 parent_folder=$(dirname "$PWD/$end_folder")
-if [ "$parent_folder" != "/" ] && [ "$parent_folder" != "$PWD" ]; then
+while [ "$parent_folder" != "/" ] && [ "$parent_folder" != "$PWD" ]; do
   list_contents "$parent_folder"
-fi
+  parent_folder=$(dirname "$parent_folder")
+done
