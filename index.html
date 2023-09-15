@@ -1,33 +1,64 @@
-<!DOCTYPE html> <!-- HTML5 doctype declaration -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elaborative HTML Page</title>
 
-<html lang="en"> <!-- Start of the HTML document, specifying the language -->
-
-<head> <!-- Head section contains metadata and links to external resources -->
-
-    <meta charset="UTF-8"> <!-- Character encoding for the document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport settings -->
-
-    <title>Elaborative HTML Page</title> <!-- Page title displayed in the browser tab -->
-
-    <link rel="stylesheet" href="styles.css"> <!-- Link to an external CSS stylesheet -->
+    <!-- External CSS stylesheet for styles -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        /* Internal CSS styles go here */
+        /* Internal CSS styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
         h1 {
             color: #333;
         }
-        /* Add your custom styles here */
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
     </style>
-
 </head>
-
-<body> <!-- Body section contains the visible content of the web page -->
-
-    <header> <!-- Header section typically includes the site logo and navigation -->
+<body>
+    <header>
         <h1>Welcome to My Website</h1>
         <nav>
             <ul>
@@ -39,7 +70,7 @@
         </nav>
     </header>
 
-    <main> <!-- Main content of the web page -->
+    <main>
         <section>
             <h2>About Us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in odio id nulla tristique ullamcorper.</p>
@@ -54,12 +85,8 @@
         </section>
     </main>
 
-    <footer> <!-- Footer section typically includes contact info and copyright notice -->
+    <footer>
         <p>&copy; 2023 My Website</p>
     </footer>
-
-    <!-- JavaScript scripts can be included at the end of the body -->
-
 </body>
-
 </html>
