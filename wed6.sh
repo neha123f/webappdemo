@@ -15,13 +15,19 @@ if ! [[ "$user_input" =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 
-# Loop through and print the contents of folders that are less than or equal to the user's input
-for folder in "$current_directory"/*; do
-  if [ -d "$folder" ]; then
-    folder_name=$(basename "$folder")
-    if [[ "$folder_name" =~ ^[0-9]+$ ]] && [ "$folder_name" -le "$user_input" ]; then
-      echo "Contents of Folder $folder_name:"
-      ls "$folder"
+# Check if the folder with the user input number exists in the current directory
+if [ ! -d "$current_directory/$user_input" ]; then
+  echo "Folder $user_input not found in the current directory."
+  exit 1
+else
+  # Loop through and print the contents of folders that are less than or equal to the user's input
+  for folder in "$current_directory"/*; do
+    if [ -d "$folder" ]; then
+      folder_name=$(basename "$folder")
+      if [[ "$folder_name" =~ ^[0-9]+$ ]] && [ "$folder_name" -le "$user_input" ]; then
+        echo "Contents of Folder $folder_name:"
+        ls "$folder"
+      fi
     fi
-  fi
-done
+  done
+fi
