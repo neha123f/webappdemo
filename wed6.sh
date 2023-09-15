@@ -7,8 +7,8 @@ current_directory=$(pwd)
 current_directory_contents=$(ls "$current_directory")
 
 # Ask the user for input (expecting a number)
-read -p "Enter a folder number: " user_input
-
+#read -p "Enter a folder number: " user_input
+user_input=$1
 # Check if the user input is a valid number
 if ! [[ "$user_input" =~ ^[0-9]+$ ]]; then
   echo "Invalid input. Please enter a valid number."
